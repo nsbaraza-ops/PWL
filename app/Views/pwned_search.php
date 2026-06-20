@@ -329,7 +329,7 @@
                     <!-- Member 3 -->
                     <div class="bg-[#0B132B] border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row items-center gap-6 shadow-lg">
                         <div class="w-32 h-32 bg-gray-700 rounded-xl flex-shrink-0 flex items-center justify-center text-4xl overflow-hidden border border-gray-700"><div class="w-32 h-32 rounded-xl flex-shrink-0 overflow-hidden border border-gray-700 bg-gray-800 shadow-inner">
-    <img src="<?= base_url('image/Nanda.jpg') ?>" alt="Foto Najib" class="w-full h-full object-cover">
+    <img src="<?= base_url('image/Nanduy.jpeg') ?>" alt="Foto Najib" class="w-full h-full object-cover">
 </div></div>
                         <div class="space-y-3 text-center md:text-left flex-grow">
                             <div>
