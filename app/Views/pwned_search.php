@@ -9,24 +9,25 @@
 </head>
 <body class="bg-[#F4F6FA] text-gray-800 font-sans min-h-screen flex flex-col justify-between scroll-smooth">
 
-    <!-- NAVBAR (Updated berdasarkan image_cd1c44.png) -->
-    <nav class="bg-[#0B132B] px-6 py-4 flex justify-between items-center text-white sticky top-0 z-50 shadow-md">
-        <!-- Sisi Kanan: Logo / Brand -->
-        <div class="flex items-center space-x-2 w-1/4">
-            <span class="text-xl font-bold tracking-wider text-blue-400">❖ PWNED</span>
-        </div>
-        
-        <!-- Sisi Tengah: Menu Navigasi Utama -->
-        <div id="nav-container" class="hidden md:flex justify-center space-x-6 text-sm text-gray-300 w-2/4">
-            <a href="/" id="nav-home" class="nav-link text-blue-400 font-semibold border-b-2 border-blue-400 pb-1 transition-all duration-200">HOME</a>
-            <a href="#cek-section" id="nav-cek" class="nav-link hover:text-white pb-1 transition-all duration-200">CEK EMAIL</a>
-            <a href="#statistik-section" id="nav-statistik" class="nav-link hover:text-white pb-1 transition-all duration-200">STATISTIK</a>
-            <a href="#tentang-section" id="nav-tentang" class="nav-link hover:text-white pb-1 transition-all duration-200">TENTANG</a>
-        </div>
-        
-        <!-- Sisi Kanan: Elemen Penyeimbang Layout (Tombol Lama Dihapus) -->
-        <div class="hidden md:block w-1/4"></div>
-    </nav>
+    <!-- NAVBAR (Menu di Tengah, Upgrade di Kanan, Sticky Responsif) -->
+    <nav class="bg-[#0B132B] px-6 py-4 grid grid-cols-3 items-center text-white sticky top-0 z-50 shadow-md">
+    <div class="flex items-center space-x-2">
+        <span class="text-xl font-bold tracking-wider text-blue-400">❖ PWNED</span>
+    </div>
+    
+    <div id="nav-container" class="hidden md:flex justify-center space-x-6 text-sm text-gray-300">
+        <a href="<?= base_url('/') ?>" id="nav-home" class="nav-link text-blue-400 font-semibold border-b-2 border-blue-400 pb-1 transition-all duration-200">HOME</a>
+        <a href="#cek-section" id="nav-cek" class="nav-link hover:text-white pb-1 transition-all duration-200">CEK EMAIL</a>
+        <a href="#statistik-section" id="nav-statistik" class="nav-link hover:text-white pb-1 transition-all duration-200">STATISTIK</a>
+        <a href="#tentang-section" id="nav-tentang" class="nav-link hover:text-white pb-1 transition-all duration-200">TENTANG</a>
+    </div>
+    
+    <div class="flex justify-end">
+        <a href="<?= base_url('upgrade') ?>" class="flex items-center gap-1.5 bg-[#004e89] hover:bg-[#00355d] text-white px-4 py-1.5 rounded-full text-xs font-semibold transition shadow-md">
+            <span>✦</span> Upgrade
+        </a>
+    </div>
+</nav>
 
     <!-- MAIN CONTENT -->
     <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-12 space-y-16">
@@ -107,7 +108,7 @@
 
         <hr id="cek-section" class="border-dashed border-gray-300 my-12">
 
-        <!-- FORM PENCARIAN -->
+        <!-- FORM PENCARIAN & UPDATE LIMITASI PENGGUNAAN -->
         <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm space-y-6">
             <div class="text-center space-y-2">
                 <h2 class="text-2xl font-bold text-gray-900">Cek Email Anda</h2>
@@ -123,6 +124,24 @@
                     CEK SEKARANG 🔍
                 </button>
             </form>
+
+            <!-- Teks Limit Kuota Berjalan Tepat di Bawah Form -->
+            <div class="flex flex-col items-center text-center px-4 space-y-2">
+                <p class="text-xs text-gray-400 tracking-wide">
+                    Batas pengecekan gratis hari ini: <span class="font-bold text-blue-600">3/5</span> kali.
+                </p>
+
+                <!-- Pesan Warning Peringatan Ketika Limit Kuota Habis -->
+                <div class="flex flex-col items-center">
+                    <p class="text-sm font-bold text-red-500 animate-pulse flex items-center justify-center gap-1.5">
+                        ⚠️ Batas penggunaan pengecekan email gratis Anda sudah habis!
+                    </p>
+                    <p class="text-xs text-gray-500 mt-0.5">
+                        Silakan kembali ke website <span class="font-bold text-gray-700">6 jam lagi</span> atau besok, atau 
+                        <a href="#upgrade-section" class="text-blue-600 font-bold hover:underline">Upgrade ke Premium</a> untuk akses tanpa batas.
+                    </p>
+                </div>
+            </div>
 
             <!-- HASIL PEMERIKSAAN -->
             <?php if ($status !== null): ?>
@@ -255,6 +274,8 @@
 
     </main>
 
+    
+
     <!-- TENTANG SECTION -->
     <section id="tentang-section" class="bg-[#040814] text-white py-16 px-6 border-t border-gray-900">
         <div class="max-w-5xl w-full mx-auto space-y-12">
@@ -288,8 +309,9 @@
                     <div class="bg-[#0B132B] border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row items-center gap-6 shadow-lg">
                         <div class="w-32 h-32 bg-gray-700 rounded-xl flex-shrink-0 flex items-center justify-center text-4xl overflow-hidden border border-gray-700">
                             <div class="w-32 h-32 rounded-xl flex-shrink-0 overflow-hidden border border-gray-700 bg-gray-800 shadow-inner">
-    <img src="<?= base_url('image/Yona.JPG') ?>" alt="Foto Yoga" class="w-full h-full object-cover">
-</div></div>
+                                <img src="<?= base_url('image/Yona.JPG') ?>" alt="Foto Yoga" class="w-full h-full object-cover">
+                            </div>
+                        </div>
                         <div class="space-y-3 text-center md:text-left flex-grow">
                             <div>
                                 <h4 class="text-lg font-bold text-white tracking-wide">Yonazahran Yoga Meinendra Rizky </h4>
@@ -308,9 +330,11 @@
 
                     <!-- Member 2 -->
                     <div class="bg-[#0B132B] border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row-reverse items-center gap-6 shadow-lg">
-                        <div class="w-32 h-32 bg-gray-700 rounded-xl flex-shrink-0 flex items-center justify-center text-4xl overflow-hidden border border-gray-700"><div class="w-32 h-32 rounded-xl flex-shrink-0 overflow-hidden border border-gray-700 bg-gray-800 shadow-inner">
-    <img src="<?= base_url('image/Baraza.jpeg') ?>" alt="Foto Baraza" class="w-full h-full object-cover">
-</div></div>
+                        <div class="w-32 h-32 bg-gray-700 rounded-xl flex-shrink-0 flex items-center justify-center text-4xl overflow-hidden border border-gray-700">
+                            <div class="w-32 h-32 rounded-xl flex-shrink-0 overflow-hidden border border-gray-700 bg-gray-800 shadow-inner">
+                                <img src="<?= base_url('image/Baraza.jpeg') ?>" alt="Foto Baraza" class="w-full h-full object-cover">
+                            </div>
+                        </div>
                         <div class="space-y-3 text-center md:text-right flex-grow">
                             <div>
                                 <h4 class="text-lg font-bold text-white tracking-wide">Baraza Nandian Syah</h4>
@@ -328,9 +352,11 @@
 
                     <!-- Member 3 -->
                     <div class="bg-[#0B132B] border border-gray-800 rounded-xl p-5 flex flex-col md:flex-row items-center gap-6 shadow-lg">
-                        <div class="w-32 h-32 bg-gray-700 rounded-xl flex-shrink-0 flex items-center justify-center text-4xl overflow-hidden border border-gray-700"><div class="w-32 h-32 rounded-xl flex-shrink-0 overflow-hidden border border-gray-700 bg-gray-800 shadow-inner">
-    <img src="<?= base_url('image/Nanduy.jpeg') ?>" alt="Foto Najib" class="w-full h-full object-cover">
-</div></div>
+                        <div class="w-32 h-32 bg-gray-700 rounded-xl flex-shrink-0 flex items-center justify-center text-4xl overflow-hidden border border-gray-700">
+                            <div class="w-32 h-32 rounded-xl flex-shrink-0 overflow-hidden border border-gray-700 bg-gray-800 shadow-inner">
+                                <img src="<?= base_url('image/Nanduy.jpeg') ?>" alt="Foto Najib" class="w-full h-full object-cover">
+                            </div>
+                        </div>
                         <div class="space-y-3 text-center md:text-left flex-grow">
                             <div>
                                 <h4 class="text-lg font-bold text-white tracking-wide">Muhammad Najib Finanda</h4>
@@ -387,12 +413,47 @@
         });
     </script>
 
+    <!-- TOGGLE BILLING JAVASCRIPT (Mengubah harga bulanan/tahunan secara dinamis) -->
+    <script>
+        const btnBulanan = document.getElementById('btn-bulanan');
+        const btnTahunan = document.getElementById('btn-tahunan');
+        const pricePlus = document.getElementById('price-plus');
+        const pricePro = document.getElementById('price-pro');
+        const notePlus = document.getElementById('note-plus');
+        const notePro = document.getElementById('note-pro');
+
+        btnBulanan.addEventListener('click', () => {
+            // Ubah style tombol aktif
+            btnBulanan.className = "px-4 py-1.5 rounded-full text-xs font-bold bg-[#004e89] text-white shadow-sm transition";
+            btnTahunan.className = "px-4 py-1.5 rounded-full text-xs font-bold text-gray-500 hover:text-gray-800 transition";
+            
+            // Ubah harga ke mode bulanan asli
+            pricePlus.textContent = "Rp 25.000";
+            pricePro.textContent = "Rp 50.000";
+            notePlus.classList.add('hidden');
+            notePro.classList.add('hidden');
+        });
+
+        btnTahunan.addEventListener('click', () => {
+            // Ubah style tombol aktif
+            btnTahunan.className = "px-4 py-1.5 rounded-full text-xs font-bold bg-[#004e89] text-white shadow-sm transition";
+            btnBulanan.className = "px-4 py-1.5 rounded-full text-xs font-bold text-gray-500 hover:text-gray-800 transition";
+            
+            // Ubah harga dengan kalkulasi diskon 16% (~21.000 dan ~42.000 per bulan)
+            pricePlus.textContent = "Rp 21.000";
+            pricePro.textContent = "Rp 42.000";
+            notePlus.classList.remove('hidden');
+            notePro.classList.remove('hidden');
+        });
+    </script>
+
     <!-- ANIMASI NAVBAR SCROLLSPY -->
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = {
             'nav-cek': document.getElementById('cek-section'),
             'nav-statistik': document.getElementById('statistik-section'),
+            'nav-upgrade': document.getElementById('upgrade-section'),
             'nav-tentang': document.getElementById('tentang-section')
         };
 

@@ -5,5 +5,9 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'PwnedController::index');
-$routes->post('/cek-email', 'PwnedController::check');
+// Rute Halaman Utama (Cek Email & Statistik)
+$routes->get('/', 'Home::index');
+$routes->post('cek-email', 'Home::cekEmail');
+
+// Rute Baru khusus Halaman Upgrade Pricing
+$routes->get('upgrade', 'Home::upgrade');
